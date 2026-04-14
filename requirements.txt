@@ -1,0 +1,4 @@
+PySide6>=6.7,<7
+pyobjc-core>=10,<11
+pyobjc-framework-Cocoa>=10,<11
+pyobjc-framework-Quartz>=10,<11
