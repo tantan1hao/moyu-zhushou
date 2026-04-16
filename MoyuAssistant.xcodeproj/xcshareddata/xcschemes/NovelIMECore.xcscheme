@@ -16,7 +16,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "F5DC28DBBF3C71AF649D2C06"
-               BuildableName = "NovelIMECore.framework"
+               BuildableName = "libNovelIMECore.a"
                BlueprintName = "NovelIMECore"
                ReferencedContainer = "container:MoyuAssistant.xcodeproj">
             </BuildableReference>
@@ -47,7 +47,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F5DC28DBBF3C71AF649D2C06"
-            BuildableName = "NovelIMECore.framework"
+            BuildableName = "libNovelIMECore.a"
             BlueprintName = "NovelIMECore"
             ReferencedContainer = "container:MoyuAssistant.xcodeproj">
          </BuildableReference>
@@ -82,7 +82,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F5DC28DBBF3C71AF649D2C06"
-            BuildableName = "NovelIMECore.framework"
+            BuildableName = "libNovelIMECore.a"
             BlueprintName = "NovelIMECore"
             ReferencedContainer = "container:MoyuAssistant.xcodeproj">
          </BuildableReference>
@@ -98,7 +98,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F5DC28DBBF3C71AF649D2C06"
-            BuildableName = "NovelIMECore.framework"
+            BuildableName = "libNovelIMECore.a"
             BlueprintName = "NovelIMECore"
             ReferencedContainer = "container:MoyuAssistant.xcodeproj">
          </BuildableReference>

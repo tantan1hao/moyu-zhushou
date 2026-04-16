@@ -10,7 +10,7 @@ settings:
     CODE_SIGN_STYLE: Automatic
 targets:
   NovelIMECore:
-    type: framework
+    type: library.static
     platform: macOS
     sources:
       - path: NativeIME/Core
@@ -26,33 +26,22 @@ targets:
     platform: macOS
     sources:
       - path: NativeIME/HostApp
+      - path: NativeIME/InputMethodExtension
+        excludes:
+          - Info.plist
+          - MoyuInputMethodExtension.entitlements
+      - path: NativeIME/Resources/moyu_input.tiff
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.tantan1hao.moyuassistant
+        PRODUCT_BUNDLE_IDENTIFIER: com.tantan1hao.inputmethod.moyuassistant
         INFOPLIST_FILE: NativeIME/HostApp/Info.plist
         CURRENT_PROJECT_VERSION: 1
         MARKETING_VERSION: 1.0
+        CODE_SIGN_ENTITLEMENTS: NativeIME/HostApp/MoyuAssistant.entitlements
+        ENABLE_APP_SANDBOX: NO
+        ENABLE_HARDENED_RUNTIME: NO
     dependencies:
       - target: NovelIMECore
-      - target: MoyuInputMethodExtension
-        embed: true
-  MoyuInputMethodExtension:
-    type: app-extension
-    platform: macOS
-    sources:
-      - path: NativeIME/InputMethodExtension
-    dependencies:
-      - target: NovelIMECore
-    settings:
-      base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.tantan1hao.moyuassistant.inputmethod
-        INFOPLIST_FILE: NativeIME/InputMethodExtension/Info.plist
-        CURRENT_PROJECT_VERSION: 1
-        MARKETING_VERSION: 1.0
-        LD_RUNPATH_SEARCH_PATHS:
-          - "$(inherited)"
-          - "@executable_path/../Frameworks"
-          - "@executable_path/../../Frameworks"
   NovelIMECoreTests:
     type: bundle.unit-test
     platform: macOS
