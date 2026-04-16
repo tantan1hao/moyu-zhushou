@@ -388,7 +388,7 @@ final class NovelInputController: IMKInputController {
                 on: client,
                 markedText: markedText,
                 selectedRange: NSRange(location: caretPosition, length: 0),
-                replacementRange: NSRange(location: NSNotFound, length: 0)
+                replacementRange: NSRange(location: NSNotFound, length: NSNotFound)
             )
             NovelDiagnosticLogger.log(
                 "pushComposition direct setMarkedText success=\(marked) preedit=\(engine.preeditBuffer) caret=\(caretPosition) clientType=\(String(describing: type(of: client)))",
