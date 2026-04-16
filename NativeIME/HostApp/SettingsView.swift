@@ -11,6 +11,7 @@ struct SettingsView: View {
             Group {
                 labeledRow("安装状态", value: viewModel.installStatusText)
                 labeledRow("输入法状态", value: viewModel.inputSourceStatusText)
+                labeledRow("当前实际输入法", value: viewModel.currentInputSourceText)
                 labeledRow("状态", value: viewModel.statusText)
                 labeledRow("当前文件", value: viewModel.sourceFilePath)
                 labeledRow("当前进度", value: viewModel.progressText)
@@ -34,6 +35,10 @@ struct SettingsView: View {
                     viewModel.toggleArmed()
                 }
 
+                Button("切到摸鱼助手") {
+                    viewModel.switchToMoyuAssistant()
+                }
+
                 Button("打开键盘输入法设置") {
                     viewModel.openKeyboardInputSources()
                 }
@@ -48,6 +53,14 @@ struct SettingsView: View {
 
                 Button("刷新") {
                     viewModel.refresh()
+                }
+
+                Button("打开诊断日志") {
+                    viewModel.openDiagnosticLog()
+                }
+
+                Button("清空诊断日志") {
+                    viewModel.clearDiagnosticLog()
                 }
             }
 

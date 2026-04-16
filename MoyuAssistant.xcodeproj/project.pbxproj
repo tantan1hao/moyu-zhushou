@@ -20,6 +20,7 @@
 		84B7CCEB7BD7D5AE12EFEC51 /* NovelIMEStateStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008FBC25488040B1EB59C3FA /* NovelIMEStateStore.swift */; };
 		8AFFB8FCB2E042B805D48F42 /* NovelPlaybackEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293D7FCD3829D2769F6C1F86 /* NovelPlaybackEngine.swift */; };
 		8DAF71DCBAB97DAB11A43B41 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8A69136EF9F752C0D33278D9 /* InfoPlist.strings */; };
+		9329F491E84FAAC8ADC93F88 /* NovelDiagnosticLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C295A48B310E4285E1063392 /* NovelDiagnosticLogger.swift */; };
 		B3A7601F4090C3C85DD44894 /* NovelInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5DC6AF1B113A73B26D8A3A /* NovelInputController.swift */; };
 		BC3D1118D80060D4DA42048D /* NovelInputPolicyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98128DB1A16EAD1F08CF1D66 /* NovelInputPolicyTests.swift */; };
 		C15E9C984D93068065B3F2D8 /* NovelIMEStateStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F1C80A12AC54EE84C80380 /* NovelIMEStateStoreTests.swift */; };
@@ -67,6 +68,7 @@
 		A1D7019D38789A461FA1EC9B /* NovelIMEConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovelIMEConstants.swift; sourceTree = "<group>"; };
 		ABC4549A0885AAA53682D038 /* NovelSourceSecurityStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovelSourceSecurityStore.swift; sourceTree = "<group>"; };
 		BB8F49C39956CE72E63CF435 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		C295A48B310E4285E1063392 /* NovelDiagnosticLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovelDiagnosticLogger.swift; sourceTree = "<group>"; };
 		D69DF2C127A458A323A9E1EB /* MoyuAssistant.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MoyuAssistant.entitlements; sourceTree = "<group>"; };
 		DF1FB6D35F1B605C96FE4BDF /* MoyuAssistant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoyuAssistant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8F1C80A12AC54EE84C80380 /* NovelIMEStateStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovelIMEStateStoreTests.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 		3247E690D81AD93A68F21C7C /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				C295A48B310E4285E1063392 /* NovelDiagnosticLogger.swift */,
 				0E932A3F8CC8067BFF48D926 /* NovelDocumentLoader.swift */,
 				A1D7019D38789A461FA1EC9B /* NovelIMEConstants.swift */,
 				2D3275229DA06D875EA1F692 /* NovelIMEPersistedState.swift */,
@@ -326,6 +329,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9329F491E84FAAC8ADC93F88 /* NovelDiagnosticLogger.swift in Sources */,
 				83F52903624EA6F8EC93A9E9 /* NovelDocumentLoader.swift in Sources */,
 				5745B27E69EA89DA776F69DB /* NovelIMEConstants.swift in Sources */,
 				E9811858AF66FC4DAB3322B8 /* NovelIMEPersistedState.swift in Sources */,

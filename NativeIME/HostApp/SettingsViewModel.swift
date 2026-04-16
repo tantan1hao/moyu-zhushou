@@ -13,6 +13,7 @@ final class SettingsViewModel: ObservableObject {
     @Published private(set) var allowedAppsText = "Microsoft Word, WPS Writer"
     @Published private(set) var installStatusText = "未安装"
     @Published private(set) var inputSourceStatusText = "尚未写入系统启用列表"
+    @Published private(set) var currentInputSourceText = "未知"
     @Published private(set) var nextStepText = "先完成系统级安装，再去“键盘 -> 输入法”手动添加“摸鱼助手”。"
 
     private let stateStore = NovelIMEStateStore()
@@ -33,6 +34,7 @@ final class SettingsViewModel: ObservableObject {
     private weak var openPanel: NSOpenPanel?
 
     init() {
+        NovelDiagnosticLogger.log("SettingsViewModel init", category: "settings")
         refresh(forceDocumentReload: true)
         startAutoRefresh()
     }
@@ -109,13 +111,38 @@ final class SettingsViewModel: ObservableObject {
 
     func toggleArmed() {
         do {
-            try stateStore.update { state in
+            let updatedState = try stateStore.update { state in
                 state.armed.toggle()
+            }
+            state = updatedState
+            NovelDiagnosticLogger.log("toggleArmed -> \(updatedState.armed)", category: "settings")
+            if updatedState.armed {
+                switchToMoyuAssistant()
             }
             refresh()
         } catch {
             statusText = "状态写入失败"
+            NovelDiagnosticLogger.log("toggleArmed failed", category: "settings")
         }
+    }
+
+    func switchToMoyuAssistant() {
+        let result = InputSourceRegistrar.registerFromCurrentBundle(enable: true, select: true)
+        let currentSelection = InputSourceRegistrar.currentSelection()
+        NovelDiagnosticLogger.log(
+            "switchToMoyuAssistant registerStatus=\(result.registerStatus) selectStatus=\(result.selectStatus ?? "nil") current=\(currentSelection?.displayText ?? "nil")",
+            category: "settings"
+        )
+
+        if let currentSelection, currentSelection.matchesMoyuAssistant {
+            statusText = "已切到摸鱼助手"
+        } else if let selectStatus = result.selectStatus {
+            statusText = "切换请求已发出：\(selectStatus)"
+        } else {
+            statusText = "已尝试切换到摸鱼助手"
+        }
+
+        refresh(forceDocumentReload: false)
     }
 
     func chooseSourceFile() {
@@ -123,6 +150,7 @@ final class SettingsViewModel: ObservableObject {
             return
         }
 
+        NovelDiagnosticLogger.log("chooseSourceFile begin", category: "settings")
         stopAutoRefresh()
         isChoosingSourceFile = true
 
@@ -148,10 +176,12 @@ final class SettingsViewModel: ObservableObject {
                 self.startAutoRefresh()
 
                 guard response == .OK, let url = panel?.url else {
+                    NovelDiagnosticLogger.log("chooseSourceFile cancelled", category: "settings")
                     self.refresh(forceDocumentReload: true)
                     return
                 }
 
+                NovelDiagnosticLogger.log("chooseSourceFile selected path=\(url.path)", category: "settings")
                 self.persistSelectedSourceFile(url)
             }
         }
@@ -160,6 +190,7 @@ final class SettingsViewModel: ObservableObject {
     private func persistSelectedSourceFile(_ url: URL) {
         statusText = "正在保存稿源..."
         sourceFilePath = url.path
+        NovelDiagnosticLogger.log("persistSelectedSourceFile path=\(url.path)", category: "settings")
 
         let stateStore = stateStore
         let sourceSecurityStore = sourceSecurityStore
@@ -178,14 +209,27 @@ final class SettingsViewModel: ObservableObject {
                         return
                     }
                     self.state = savedState
+                    NovelDiagnosticLogger.log("persistSelectedSourceFile success path=\(url.path)", category: "settings")
                     self.refresh(forceDocumentReload: true)
                 }
             } catch {
                 DispatchQueue.main.async { [weak self] in
                     self?.statusText = "稿源写入失败"
                 }
+                NovelDiagnosticLogger.log("persistSelectedSourceFile failed path=\(url.path) error=\(error.localizedDescription)", category: "settings")
             }
         }
+    }
+
+    func openDiagnosticLog() {
+        NovelDiagnosticLogger.log("openDiagnosticLog path=\(NovelDiagnosticLogger.logFileURL.path)", category: "settings")
+        NSWorkspace.shared.open(NovelDiagnosticLogger.logFileURL)
+    }
+
+    func clearDiagnosticLog() {
+        NovelDiagnosticLogger.clear()
+        NovelDiagnosticLogger.log("diagnostic log cleared", category: "settings")
+        statusText = "诊断日志已清空"
     }
 
     func revealInstalledInputMethod() {
@@ -223,10 +267,15 @@ final class SettingsViewModel: ObservableObject {
         allowedAppsText = result.allowedAppsText
         installStatusText = result.installStatusText
         inputSourceStatusText = result.inputSourceStatusText
+        currentInputSourceText = result.currentInputSourceText
         nextStepText = result.nextStepText
         cachedDocument = result.documentCache?.document
         cachedDocumentSourcePath = result.documentCache?.sourcePath
         cachedDocumentModificationDate = result.documentCache?.modificationDate
+        NovelDiagnosticLogger.log(
+            "apply status=\(result.statusText) progress=\(result.progressText) actualInput=\(result.currentInputSourceText) source=\(result.sourceFilePath)",
+            category: "settings"
+        )
     }
 }
 
@@ -240,6 +289,7 @@ private extension SettingsViewModel {
     struct InstallationStatusSnapshot {
         let installStatusText: String
         let inputSourceStatusText: String
+        let currentInputSourceText: String
         let nextStepText: String
     }
 
@@ -251,6 +301,7 @@ private extension SettingsViewModel {
         let allowedAppsText: String
         let installStatusText: String
         let inputSourceStatusText: String
+        let currentInputSourceText: String
         let nextStepText: String
         let documentCache: DocumentCache?
     }
@@ -281,6 +332,7 @@ private extension SettingsViewModel {
                 allowedAppsText: allowedAppsText,
                 installStatusText: installationStatus.installStatusText,
                 inputSourceStatusText: installationStatus.inputSourceStatusText,
+                currentInputSourceText: installationStatus.currentInputSourceText,
                 nextStepText: installationStatus.nextStepText,
                 documentCache: nil
             )
@@ -320,6 +372,7 @@ private extension SettingsViewModel {
                     allowedAppsText: allowedAppsText,
                     installStatusText: installationStatus.installStatusText,
                     inputSourceStatusText: installationStatus.inputSourceStatusText,
+                    currentInputSourceText: installationStatus.currentInputSourceText,
                     nextStepText: installationStatus.nextStepText,
                     documentCache: nil
                 )
@@ -337,6 +390,7 @@ private extension SettingsViewModel {
                 allowedAppsText: allowedAppsText,
                 installStatusText: installationStatus.installStatusText,
                 inputSourceStatusText: installationStatus.inputSourceStatusText,
+                currentInputSourceText: installationStatus.currentInputSourceText,
                 nextStepText: installationStatus.nextStepText,
                 documentCache: cacheResult
             )
@@ -349,6 +403,7 @@ private extension SettingsViewModel {
                 allowedAppsText: allowedAppsText,
                 installStatusText: installationStatus.installStatusText,
                 inputSourceStatusText: installationStatus.inputSourceStatusText,
+                currentInputSourceText: installationStatus.currentInputSourceText,
                 nextStepText: installationStatus.nextStepText,
                 documentCache: nil
             )
@@ -377,19 +432,32 @@ private extension SettingsViewModel {
         let enabledInPreferences = inputSourceExistsInPreferences(key: "AppleEnabledInputSources")
         let selectedInPreferences = inputSourceExistsInPreferences(key: "AppleSelectedInputSources")
         let visibleInTIS = inputSourceVisibleInTIS()
+        let currentSelection = withMainThreadTISAccess {
+            InputSourceRegistrar.currentSelection()
+        }
+        let currentInputSourceText = currentSelection?.displayText ?? "未知"
+        let selectedNow = currentSelection?.matchesMoyuAssistant == true
 
         var statusParts: [String] = []
         statusParts.append(visibleInTIS ? "系统已注册" : "系统未注册")
         statusParts.append(enabledInPreferences ? "已加入启用列表" : "未加入启用列表")
-        statusParts.append(selectedInPreferences ? "当前已选中" : "当前未选中")
+        if selectedNow {
+            statusParts.append("当前已切到摸鱼助手")
+        } else if selectedInPreferences {
+            statusParts.append("偏好设置记录为已选中")
+        } else {
+            statusParts.append("当前未选中")
+        }
         let inputSourceStatusText = statusParts.joined(separator: " / ")
 
         let nextStepText: String
         if systemInstalled {
-            if selectedInPreferences {
-                nextStepText = "现在直接去菜单栏输入法图标或按 Control + Space，手动切到“摸鱼助手”，然后在本窗口选择 txt 并开启 Armed。"
+            if selectedNow {
+                nextStepText = "当前实际输入法已经是“摸鱼助手”。保持它不变，直接去 WPS/Word 里测试输入。"
+            } else if selectedInPreferences {
+                nextStepText = "偏好设置里记录了“摸鱼助手”，但当前实际输入法不是它。点下面的“切到摸鱼助手”按钮，再去 WPS/Word 测试。"
             } else if enabledInPreferences || visibleInTIS {
-                nextStepText = "下一步去“键盘 -> 输入法”手动添加或切换“摸鱼助手”。如果这一页没刷新，先彻底退出系统设置再打开；仍然没有时，再注销/重新登录一次。"
+                nextStepText = "下一步点下面的“切到摸鱼助手”按钮；如果还不行，再去“键盘 -> 输入法”手动切换。"
             } else {
                 nextStepText = "系统级 app 已安装，但当前会话还没完全认到它。先打开“键盘 -> 输入法”检查；如果看不到，退出系统设置后重开，仍无则注销/重新登录一次。"
             }
@@ -402,6 +470,7 @@ private extension SettingsViewModel {
         return InstallationStatusSnapshot(
             installStatusText: installStatusText,
             inputSourceStatusText: inputSourceStatusText,
+            currentInputSourceText: currentInputSourceText,
             nextStepText: nextStepText
         )
     }

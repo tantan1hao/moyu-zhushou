@@ -26,6 +26,7 @@ final class MoyuAssistantAppDelegate: NSObject, NSApplicationDelegate, NSWindowD
     private var settingsWindowController: NSWindowController?
 
     func applicationDidFinishLaunching(_ notification: Notification) {
+        NovelDiagnosticLogger.log("applicationDidFinishLaunching args=\(ProcessInfo.processInfo.arguments)", category: "host")
         let arguments = ProcessInfo.processInfo.arguments
         if arguments.contains("--register-input-source") {
             let result = InputSourceRegistrar.registerFromCurrentBundle(
@@ -41,6 +42,10 @@ final class MoyuAssistantAppDelegate: NSObject, NSApplicationDelegate, NSWindowD
             if let selectStatus = result.selectStatus {
                 print("select=\(selectStatus)")
             }
+            NovelDiagnosticLogger.log(
+                "register-input-source registerStatus=\(result.registerStatus) enableStatuses=\(result.enableStatuses) selectStatus=\(result.selectStatus ?? "nil")",
+                category: "host"
+            )
             NSApp.terminate(nil)
             return
         }
@@ -49,6 +54,7 @@ final class MoyuAssistantAppDelegate: NSObject, NSApplicationDelegate, NSWindowD
         let connectionName = (Bundle.main.object(forInfoDictionaryKey: "InputMethodConnectionName") as? String)
             ?? NovelIMEConstants.connectionName
         server = IMKServer(name: connectionName, bundleIdentifier: Bundle.main.bundleIdentifier)
+        NovelDiagnosticLogger.log("IMKServer created connectionName=\(connectionName) bundleID=\(Bundle.main.bundleIdentifier ?? "nil")", category: "host")
 
         if arguments.contains("--show-settings") {
             showSettingsWindow()
@@ -67,6 +73,7 @@ final class MoyuAssistantAppDelegate: NSObject, NSApplicationDelegate, NSWindowD
     }
 
     private func showSettingsWindow() {
+        NovelDiagnosticLogger.log("showSettingsWindow", category: "host")
         viewModel.startAutoRefresh()
         viewModel.refresh()
 
@@ -107,6 +114,7 @@ final class MoyuAssistantAppDelegate: NSObject, NSApplicationDelegate, NSWindowD
     }
 
     func windowWillClose(_ notification: Notification) {
+        NovelDiagnosticLogger.log("windowWillClose", category: "host")
         viewModel.stopAutoRefresh()
         if NSApp.activationPolicy() != .accessory {
             NSApp.setActivationPolicy(.accessory)

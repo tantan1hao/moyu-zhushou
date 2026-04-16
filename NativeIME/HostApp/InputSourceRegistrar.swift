@@ -3,6 +3,25 @@ import Foundation
 import NovelIMECore
 
 enum InputSourceRegistrar {
+    struct CurrentSelection {
+        let localizedName: String
+        let bundleIdentifier: String
+        let inputSourceIdentifier: String
+
+        var displayText: String {
+            let name = localizedName.isEmpty ? "未知输入法" : localizedName
+            let sourceID = inputSourceIdentifier.isEmpty ? "未提供 ID" : inputSourceIdentifier
+            let bundleID = bundleIdentifier.isEmpty ? "未提供 Bundle ID" : bundleIdentifier
+            return "\(name) (\(sourceID) / \(bundleID))"
+        }
+
+        var matchesMoyuAssistant: Bool {
+            bundleIdentifier == NovelIMEConstants.hostBundleIdentifier
+                || inputSourceIdentifier == NovelIMEConstants.inputSourceIdentifier
+                || inputSourceIdentifier == NovelIMEConstants.inputModeIdentifier
+        }
+    }
+
     struct Result {
         let messages: [String]
         let registerStatus: OSStatus
@@ -53,6 +72,18 @@ enum InputSourceRegistrar {
             registerStatus: registerStatus,
             enableStatuses: enableStatuses,
             selectStatus: selectStatus
+        )
+    }
+
+    static func currentSelection() -> CurrentSelection? {
+        guard let source = TISCopyCurrentKeyboardInputSource()?.takeRetainedValue() else {
+            return nil
+        }
+
+        return CurrentSelection(
+            localizedName: stringProperty(for: source, key: kTISPropertyLocalizedName),
+            bundleIdentifier: stringProperty(for: source, key: kTISPropertyBundleID),
+            inputSourceIdentifier: stringProperty(for: source, key: kTISPropertyInputSourceID)
         )
     }
 
