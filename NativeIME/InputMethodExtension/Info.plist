@@ -57,9 +57,9 @@
     <key>InputMethodConnectionName</key>
     <string>$(PRODUCT_BUNDLE_IDENTIFIER)_Connection</string>
     <key>InputMethodServerControllerClass</key>
-    <string>MoyuNovelInputController</string>
+    <string>NovelInputController</string>
     <key>InputMethodServerDelegateClass</key>
-    <string>MoyuIMEExtensionDelegate</string>
+    <string>NovelInputController</string>
     <key>LSMinimumSystemVersion</key>
     <string>15.0</string>
     <key>LSUIElement</key>

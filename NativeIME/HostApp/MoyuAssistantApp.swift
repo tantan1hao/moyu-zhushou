@@ -67,6 +67,7 @@ final class MoyuAssistantAppDelegate: NSObject, NSApplicationDelegate, NSWindowD
     }
 
     private func showSettingsWindow() {
+        viewModel.startAutoRefresh()
         viewModel.refresh()
 
         elevateProcessForSettingsWindow()
@@ -106,6 +107,7 @@ final class MoyuAssistantAppDelegate: NSObject, NSApplicationDelegate, NSWindowD
     }
 
     func windowWillClose(_ notification: Notification) {
+        viewModel.stopAutoRefresh()
         if NSApp.activationPolicy() != .accessory {
             NSApp.setActivationPolicy(.accessory)
         }

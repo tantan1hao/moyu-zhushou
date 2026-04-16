@@ -61,9 +61,9 @@
     <key>InputMethodConnectionName</key>
     <string>com.tantan1hao.inputmethod.moyuassistant_Connection</string>
     <key>InputMethodServerControllerClass</key>
-    <string>$(PRODUCT_MODULE_NAME).NovelInputController</string>
+    <string>NovelInputController</string>
     <key>InputMethodServerDelegateClass</key>
-    <string>$(PRODUCT_MODULE_NAME).NovelInputController</string>
+    <string>NovelInputController</string>
     <key>LSUIElement</key>
     <true/>
     <key>NSPrincipalClass</key>

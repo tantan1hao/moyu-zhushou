@@ -123,4 +123,26 @@ final class NovelPlaybackEngineTests: XCTestCase {
 
         XCTAssertEqual(document.paragraphs, ["我爱你"])
     }
+
+    func testLoadSourceConvertsRTFWithLeadingBOM() throws {
+        let rtfText = "\u{feff}   {\\rtf1\\ansi hello}"
+        let url = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString + ".txt")
+        try rtfText.write(to: url, atomically: true, encoding: .utf8)
+        defer { try? FileManager.default.removeItem(at: url) }
+
+        let document = try loader.load(from: url)
+
+        XCTAssertEqual(document.paragraphs, ["hello"])
+    }
+
+    func testLoadSourceDecodesUTF16Text() throws {
+        let text = "第一段\n\n第二段"
+        let url = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString + ".txt")
+        try text.write(to: url, atomically: true, encoding: .utf16)
+        defer { try? FileManager.default.removeItem(at: url) }
+
+        let document = try loader.load(from: url)
+
+        XCTAssertEqual(document.paragraphs, ["第一段", "第二段"])
+    }
 }

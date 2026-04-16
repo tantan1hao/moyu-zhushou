@@ -13,6 +13,7 @@ final class NovelInputController: IMKInputController {
     private var currentDocument: NovelDocument?
     private var runtimeEngine: NovelPlaybackEngine?
     private var lastSourceURL: URL?
+    private var lastSourceModificationDate: Date?
 
     override func activateServer(_ sender: Any!) {
         _ = synchronizeRuntime(forceReloadDocument: true)
@@ -131,9 +132,12 @@ final class NovelInputController: IMKInputController {
         }
 
         let result = engine.commitPreedit()
-        let persisted = engine.persistedState(from: currentState)
         do {
-            try stateStore.save(persisted)
+            let persisted = try stateStore.update { state in
+                state.paragraphIndex = engine.committedParagraphIndex
+                state.charIndex = engine.committedCharIndex
+                state.eofReached = engine.eofReached
+            }
             currentState = persisted
         } catch {
             return false
@@ -158,31 +162,53 @@ final class NovelInputController: IMKInputController {
             currentDocument = nil
             runtimeEngine = nil
             lastSourceURL = nil
+            lastSourceModificationDate = nil
             return nil
         }
 
-        if forceReloadDocument || currentDocument == nil || lastSourceURL != sourceURL {
-            do {
-                let loadedDocument: NovelDocument? = try sourceSecurityStore.withAccessToSourceURL(
-                    fallback: sourceURL
-                ) { securedSourceURL in
-                    try documentLoader.load(from: securedSourceURL)
-                }
+        do {
+            let loadContext = try sourceSecurityStore.withAccessToSourceURL(
+                fallback: sourceURL
+            ) { securedSourceURL -> DocumentLoadContext in
+                let modificationDate = try? securedSourceURL
+                    .resourceValues(forKeys: [.contentModificationDateKey])
+                    .contentModificationDate
+                let shouldReloadDocument = forceReloadDocument
+                    || currentDocument == nil
+                    || lastSourceURL?.path != securedSourceURL.path
+                    || lastSourceModificationDate != modificationDate
+                let document = shouldReloadDocument
+                    ? try documentLoader.load(from: securedSourceURL)
+                    : currentDocument
 
-                guard let loadedDocument else {
-                    currentDocument = nil
-                    runtimeEngine = nil
-                    return nil
-                }
+                return DocumentLoadContext(
+                    resolvedSourceURL: securedSourceURL,
+                    modificationDate: modificationDate,
+                    document: document,
+                    reloadedDocument: shouldReloadDocument
+                )
+            }
 
-                currentDocument = loadedDocument
-                lastSourceURL = sourceURL
-                runtimeEngine = nil
-            } catch {
+            guard let loadContext, let document = loadContext.document else {
                 currentDocument = nil
                 runtimeEngine = nil
+                lastSourceURL = nil
+                lastSourceModificationDate = nil
                 return nil
             }
+
+            currentDocument = document
+            lastSourceURL = loadContext.resolvedSourceURL
+            lastSourceModificationDate = loadContext.modificationDate
+            if loadContext.reloadedDocument {
+                runtimeEngine = nil
+            }
+        } catch {
+            currentDocument = nil
+            runtimeEngine = nil
+            lastSourceURL = nil
+            lastSourceModificationDate = nil
+            return nil
         }
 
         guard let document = currentDocument else {
@@ -217,5 +243,14 @@ final class NovelInputController: IMKInputController {
             control: event.modifierFlags.contains(.control),
             option: event.modifierFlags.contains(.option)
         )
+    }
+}
+
+private extension NovelInputController {
+    struct DocumentLoadContext {
+        let resolvedSourceURL: URL
+        let modificationDate: Date?
+        let document: NovelDocument?
+        let reloadedDocument: Bool
     }
 }

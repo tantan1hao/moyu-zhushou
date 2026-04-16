@@ -1,6 +1,6 @@
 import Foundation
 
-public final class NovelSourceSecurityStore {
+public final class NovelSourceSecurityStore: @unchecked Sendable {
     public let bookmarkFileURL: URL
 
     public init(baseDirectoryURL: URL? = nil) {
@@ -26,6 +26,10 @@ public final class NovelSourceSecurityStore {
     }
 
     public func resolvedSourceURL(fallback: URL? = nil) -> URL? {
+        if let directURL = directlyReadableURL(from: fallback) {
+            return directURL
+        }
+
         guard let bookmarkData = try? Data(contentsOf: bookmarkFileURL) else {
             return fallback
         }
@@ -44,7 +48,7 @@ public final class NovelSourceSecurityStore {
             try? saveBookmark(for: resolvedURL)
         }
 
-        return resolvedURL
+        return directlyReadableURL(from: resolvedURL) ?? resolvedURL
     }
 
     public func withAccessToSourceURL<T>(
@@ -55,7 +59,10 @@ public final class NovelSourceSecurityStore {
             return nil
         }
 
-        let securityScopeAcquired = sourceURL.startAccessingSecurityScopedResource()
+        let resolvedPath = sourceURL.standardizedFileURL.path
+        let fallbackPath = fallback?.standardizedFileURL.path
+        let shouldUseSecurityScope = fallbackPath == nil || fallbackPath != resolvedPath
+        let securityScopeAcquired = shouldUseSecurityScope && sourceURL.startAccessingSecurityScopedResource()
         defer {
             if securityScopeAcquired {
                 sourceURL.stopAccessingSecurityScopedResource()
@@ -70,5 +77,22 @@ public final class NovelSourceSecurityStore {
             at: bookmarkFileURL.deletingLastPathComponent(),
             withIntermediateDirectories: true
         )
+    }
+
+    private func directlyReadableURL(from sourceURL: URL?) -> URL? {
+        guard let sourceURL else {
+            return nil
+        }
+
+        let normalizedURL = sourceURL.standardizedFileURL
+        var isDirectory = ObjCBool(false)
+        guard FileManager.default.fileExists(atPath: normalizedURL.path, isDirectory: &isDirectory),
+              !isDirectory.boolValue,
+              FileManager.default.isReadableFile(atPath: normalizedURL.path)
+        else {
+            return nil
+        }
+
+        return normalizedURL
     }
 }
