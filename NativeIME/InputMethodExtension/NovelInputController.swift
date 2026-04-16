@@ -2,9 +2,10 @@ import AppKit
 import InputMethodKit
 import NovelIMECore
 
-@objc(MoyuNovelInputController)
+@objc(NovelInputController)
 final class NovelInputController: IMKInputController {
     private let stateStore = NovelIMEStateStore()
+    private let sourceSecurityStore = NovelSourceSecurityStore()
     private let documentLoader = NovelDocumentLoader()
     private let inputPolicy = NovelInputPolicy()
 
@@ -92,12 +93,21 @@ final class NovelInputController: IMKInputController {
     }
 
     override func showPreferences(_ sender: Any!) {
-        let appURL = Bundle.main.bundleURL
-            .deletingLastPathComponent()
-            .deletingLastPathComponent()
-            .deletingLastPathComponent()
+        let bundleURL = Bundle.main.bundleURL
+        let appURL: URL
+        if bundleURL.pathExtension == "app" {
+            appURL = bundleURL
+        } else {
+            appURL = bundleURL
+                .deletingLastPathComponent()
+                .deletingLastPathComponent()
+                .deletingLastPathComponent()
+        }
 
-        NSWorkspace.shared.openApplication(at: appURL, configuration: .init()) { _, _ in }
+        let configuration = NSWorkspace.OpenConfiguration()
+        configuration.activates = true
+        configuration.arguments = ["--show-settings"]
+        NSWorkspace.shared.openApplication(at: appURL, configuration: configuration) { _, _ in }
     }
 
     private func handleDelete(engine: NovelPlaybackEngine) -> Bool {
@@ -153,7 +163,19 @@ final class NovelInputController: IMKInputController {
 
         if forceReloadDocument || currentDocument == nil || lastSourceURL != sourceURL {
             do {
-                currentDocument = try documentLoader.load(from: sourceURL)
+                let loadedDocument: NovelDocument? = try sourceSecurityStore.withAccessToSourceURL(
+                    fallback: sourceURL
+                ) { securedSourceURL in
+                    try documentLoader.load(from: securedSourceURL)
+                }
+
+                guard let loadedDocument else {
+                    currentDocument = nil
+                    runtimeEngine = nil
+                    return nil
+                }
+
+                currentDocument = loadedDocument
                 lastSourceURL = sourceURL
                 runtimeEngine = nil
             } catch {

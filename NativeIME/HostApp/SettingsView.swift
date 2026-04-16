@@ -9,10 +9,20 @@ struct SettingsView: View {
                 .font(.system(size: 28, weight: .bold))
 
             Group {
+                labeledRow("安装状态", value: viewModel.installStatusText)
+                labeledRow("输入法状态", value: viewModel.inputSourceStatusText)
                 labeledRow("状态", value: viewModel.statusText)
                 labeledRow("当前文件", value: viewModel.sourceFilePath)
                 labeledRow("当前进度", value: viewModel.progressText)
                 labeledRow("允许应用", value: viewModel.allowedAppsText)
+            }
+
+            VStack(alignment: .leading, spacing: 6) {
+                Text("首次启用指引")
+                    .font(.headline)
+                Text(viewModel.nextStepText)
+                    .font(.body)
+                    .textSelection(.enabled)
             }
 
             HStack(spacing: 12) {
@@ -20,8 +30,16 @@ struct SettingsView: View {
                     viewModel.chooseSourceFile()
                 }
 
-                Button(viewModel.state.armed ? "关闭模式" : "开启模式") {
+                Button(viewModel.state.armed ? "关闭 Armed" : "开启 Armed") {
                     viewModel.toggleArmed()
+                }
+
+                Button("打开键盘输入法设置") {
+                    viewModel.openKeyboardInputSources()
+                }
+
+                Button("查看已安装输入法") {
+                    viewModel.revealInstalledInputMethod()
                 }
 
                 Button("打开输入法文件夹") {
@@ -36,7 +54,7 @@ struct SettingsView: View {
             Spacer()
         }
         .padding(24)
-        .frame(minWidth: 520, minHeight: 320)
+        .frame(minWidth: 680, minHeight: 420)
     }
 
     private func labeledRow(_ title: String, value: String) -> some View {

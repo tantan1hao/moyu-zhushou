@@ -40,6 +40,16 @@ public final class NovelIMEStateStore {
     }
 
     public static func defaultDirectoryURL() -> URL {
+        if let appGroupIdentifier = NovelIMEConstants.appGroupIdentifier(),
+           let containerURL = FileManager.default.containerURL(
+               forSecurityApplicationGroupIdentifier: appGroupIdentifier
+           ) {
+            return containerURL.appendingPathComponent(
+                "Library/Application Support/\(NovelIMEConstants.stateDirectoryName)",
+                isDirectory: true
+            )
+        }
+
         let baseURL = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!
         return baseURL.appendingPathComponent(NovelIMEConstants.stateDirectoryName, isDirectory: true)
     }

@@ -7,43 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1B7782A63E520F9E00652A52 /* NovelIMECore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8575B8146E8AFD97DD502B07 /* NovelIMECore.framework */; };
+		03BF9114423D7AA195D33E8F /* libNovelIMECore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 04E4A3644877D359A645B263 /* libNovelIMECore.a */; };
 		3CD40C27C04D436DBAB2928A /* NovelInputPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3101A59E70BCF7774BC4F9E8 /* NovelInputPolicy.swift */; };
-		47DF75471C3996FD165CE072 /* NovelIMECore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8575B8146E8AFD97DD502B07 /* NovelIMECore.framework */; };
 		5745B27E69EA89DA776F69DB /* NovelIMEConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D7019D38789A461FA1EC9B /* NovelIMEConstants.swift */; };
+		5A4372D295D8A2D43C489DCE /* moyu_input.tiff in Resources */ = {isa = PBXBuildFile; fileRef = A088AAA9DDAFD1ABAD416252 /* moyu_input.tiff */; };
+		616068121D5DC57EDF12C26C /* MoyuIMEExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C68C7B5B3AFAFB205E9D0D /* MoyuIMEExtensionDelegate.swift */; };
 		67D8B2E589F1A4F320E80664 /* MoyuAssistantApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91520E8E4C070E53603898E0 /* MoyuAssistantApp.swift */; };
 		6BED6FAD478525AD9C5117B5 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6969F995D227A5A116758BEA /* SettingsViewModel.swift */; };
 		6E59B829B069BCBC8482E5AD /* NovelPlaybackEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C05946C2981C73BCC832857 /* NovelPlaybackEngineTests.swift */; };
-		6F77EAF4B9B6C40BEDCD87AF /* NovelIMECore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8575B8146E8AFD97DD502B07 /* NovelIMECore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		703B99CFEC34DEB8364F76FC /* NovelIMECore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8575B8146E8AFD97DD502B07 /* NovelIMECore.framework */; };
 		732EA95FAB0654F090100D3B /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB582A9BD2FD88C8B49F5E9E /* SettingsView.swift */; };
 		83F52903624EA6F8EC93A9E9 /* NovelDocumentLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E932A3F8CC8067BFF48D926 /* NovelDocumentLoader.swift */; };
 		84B7CCEB7BD7D5AE12EFEC51 /* NovelIMEStateStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008FBC25488040B1EB59C3FA /* NovelIMEStateStore.swift */; };
 		8AFFB8FCB2E042B805D48F42 /* NovelPlaybackEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293D7FCD3829D2769F6C1F86 /* NovelPlaybackEngine.swift */; };
-		8F8A4B0CC835BF33234CBF6A /* MoyuIMEExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C68C7B5B3AFAFB205E9D0D /* MoyuIMEExtensionDelegate.swift */; };
-		9EB962992EA7FD7CCA2868C6 /* MoyuInputMethodExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 84D2F1128B911BA1425F8582 /* MoyuInputMethodExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		8DAF71DCBAB97DAB11A43B41 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8A69136EF9F752C0D33278D9 /* InfoPlist.strings */; };
+		B3A7601F4090C3C85DD44894 /* NovelInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5DC6AF1B113A73B26D8A3A /* NovelInputController.swift */; };
 		BC3D1118D80060D4DA42048D /* NovelInputPolicyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98128DB1A16EAD1F08CF1D66 /* NovelInputPolicyTests.swift */; };
 		C15E9C984D93068065B3F2D8 /* NovelIMEStateStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F1C80A12AC54EE84C80380 /* NovelIMEStateStoreTests.swift */; };
-		C5F54F5BD7E03CAEB0D11F0F /* NovelIMECore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8575B8146E8AFD97DD502B07 /* NovelIMECore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C4097B458BCA39B177618021 /* InputSourceRegistrar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C24D635272F1727532D17DA /* InputSourceRegistrar.swift */; };
+		C461CD33E993CD35E47D8405 /* NovelSourceSecurityStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC4549A0885AAA53682D038 /* NovelSourceSecurityStore.swift */; };
+		C7FE968929AC39ACF0323DB2 /* libNovelIMECore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 04E4A3644877D359A645B263 /* libNovelIMECore.a */; };
 		E9811858AF66FC4DAB3322B8 /* NovelIMEPersistedState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3275229DA06D875EA1F692 /* NovelIMEPersistedState.swift */; };
-		F9DB67C4D0364A11AA202D04 /* NovelInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5DC6AF1B113A73B26D8A3A /* NovelInputController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		034A7AAEBCF0284FD852E817 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 269D0D0A6C21A6D7B36D9BA1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = F5DC28DBBF3C71AF649D2C06;
-			remoteInfo = NovelIMECore;
-		};
-		8B6ED2CC71611933FF64EEC4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 269D0D0A6C21A6D7B36D9BA1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 1F49EF062C133E40907C842C;
-			remoteInfo = MoyuInputMethodExtension;
-		};
 		A661031AA820E340C0DBD23D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 269D0D0A6C21A6D7B36D9BA1 /* Project object */;
@@ -60,79 +46,39 @@
 		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		3517192BA624B179F585EE2A /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				C5F54F5BD7E03CAEB0D11F0F /* NovelIMECore.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		51D24F4CA1B59728AF430C4B /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				6F77EAF4B9B6C40BEDCD87AF /* NovelIMECore.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		64055FB8BD068BA962BD88AE /* Embed Foundation Extensions */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-				9EB962992EA7FD7CCA2868C6 /* MoyuInputMethodExtension.appex in Embed Foundation Extensions */,
-			);
-			name = "Embed Foundation Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		008FBC25488040B1EB59C3FA /* NovelIMEStateStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovelIMEStateStore.swift; sourceTree = "<group>"; };
+		04E4A3644877D359A645B263 /* libNovelIMECore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libNovelIMECore.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E932A3F8CC8067BFF48D926 /* NovelDocumentLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovelDocumentLoader.swift; sourceTree = "<group>"; };
-		10539BA81180F4F63DF66C4E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		1C05946C2981C73BCC832857 /* NovelPlaybackEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovelPlaybackEngineTests.swift; sourceTree = "<group>"; };
 		293D7FCD3829D2769F6C1F86 /* NovelPlaybackEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovelPlaybackEngine.swift; sourceTree = "<group>"; };
+		2C24D635272F1727532D17DA /* InputSourceRegistrar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSourceRegistrar.swift; sourceTree = "<group>"; };
 		2D3275229DA06D875EA1F692 /* NovelIMEPersistedState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovelIMEPersistedState.swift; sourceTree = "<group>"; };
 		3101A59E70BCF7774BC4F9E8 /* NovelInputPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovelInputPolicy.swift; sourceTree = "<group>"; };
+		39AAF1D0C5F7C9773EE4F881 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		415BBC8EBDF3A05A2CE5A323 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6969F995D227A5A116758BEA /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		6D5DC6AF1B113A73B26D8A3A /* NovelInputController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovelInputController.swift; sourceTree = "<group>"; };
 		73CD4081A543D2BA62BEEAB3 /* NovelIMECoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NovelIMECoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		76C68C7B5B3AFAFB205E9D0D /* MoyuIMEExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyuIMEExtensionDelegate.swift; sourceTree = "<group>"; };
-		84D2F1128B911BA1425F8582 /* MoyuInputMethodExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MoyuInputMethodExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		8575B8146E8AFD97DD502B07 /* NovelIMECore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NovelIMECore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		91520E8E4C070E53603898E0 /* MoyuAssistantApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyuAssistantApp.swift; sourceTree = "<group>"; };
 		98128DB1A16EAD1F08CF1D66 /* NovelInputPolicyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovelInputPolicyTests.swift; sourceTree = "<group>"; };
+		A088AAA9DDAFD1ABAD416252 /* moyu_input.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = moyu_input.tiff; sourceTree = "<group>"; };
 		A1D7019D38789A461FA1EC9B /* NovelIMEConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovelIMEConstants.swift; sourceTree = "<group>"; };
+		ABC4549A0885AAA53682D038 /* NovelSourceSecurityStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovelSourceSecurityStore.swift; sourceTree = "<group>"; };
 		BB8F49C39956CE72E63CF435 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		D69DF2C127A458A323A9E1EB /* MoyuAssistant.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MoyuAssistant.entitlements; sourceTree = "<group>"; };
 		DF1FB6D35F1B605C96FE4BDF /* MoyuAssistant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoyuAssistant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8F1C80A12AC54EE84C80380 /* NovelIMEStateStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovelIMEStateStoreTests.swift; sourceTree = "<group>"; };
 		FB582A9BD2FD88C8B49F5E9E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		10F0EAB2B86AAA6DDE0854C4 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				47DF75471C3996FD165CE072 /* NovelIMECore.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		3854DF9F0EEC4C4B92A6A7F4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1B7782A63E520F9E00652A52 /* NovelIMECore.framework in Frameworks */,
+				03BF9114423D7AA195D33E8F /* libNovelIMECore.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,7 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				703B99CFEC34DEB8364F76FC /* NovelIMECore.framework in Frameworks */,
+				C7FE968929AC39ACF0323DB2 /* libNovelIMECore.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,6 +113,7 @@
 				008FBC25488040B1EB59C3FA /* NovelIMEStateStore.swift */,
 				3101A59E70BCF7774BC4F9E8 /* NovelInputPolicy.swift */,
 				293D7FCD3829D2769F6C1F86 /* NovelPlaybackEngine.swift */,
+				ABC4549A0885AAA53682D038 /* NovelSourceSecurityStore.swift */,
 			);
 			name = Core;
 			path = NativeIME/Core;
@@ -176,9 +123,12 @@
 			isa = PBXGroup;
 			children = (
 				BB8F49C39956CE72E63CF435 /* Info.plist */,
+				2C24D635272F1727532D17DA /* InputSourceRegistrar.swift */,
+				D69DF2C127A458A323A9E1EB /* MoyuAssistant.entitlements */,
 				91520E8E4C070E53603898E0 /* MoyuAssistantApp.swift */,
 				FB582A9BD2FD88C8B49F5E9E /* SettingsView.swift */,
 				6969F995D227A5A116758BEA /* SettingsViewModel.swift */,
+				8A69136EF9F752C0D33278D9 /* InfoPlist.strings */,
 			);
 			name = HostApp;
 			path = NativeIME/HostApp;
@@ -187,7 +137,6 @@
 		62C895FE517E8D99DD9F7B63 /* InputMethodExtension */ = {
 			isa = PBXGroup;
 			children = (
-				10539BA81180F4F63DF66C4E /* Info.plist */,
 				76C68C7B5B3AFAFB205E9D0D /* MoyuIMEExtensionDelegate.swift */,
 				6D5DC6AF1B113A73B26D8A3A /* NovelInputController.swift */,
 			);
@@ -195,12 +144,20 @@
 			path = NativeIME/InputMethodExtension;
 			sourceTree = "<group>";
 		};
+		7E9E6FC475C7BFB4068A80A1 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A088AAA9DDAFD1ABAD416252 /* moyu_input.tiff */,
+			);
+			name = Resources;
+			path = NativeIME/Resources;
+			sourceTree = "<group>";
+		};
 		C03355FA9E685EB92E1878E2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				04E4A3644877D359A645B263 /* libNovelIMECore.a */,
 				DF1FB6D35F1B605C96FE4BDF /* MoyuAssistant.app */,
-				84D2F1128B911BA1425F8582 /* MoyuInputMethodExtension.appex */,
-				8575B8146E8AFD97DD502B07 /* NovelIMECore.framework */,
 				73CD4081A543D2BA62BEEAB3 /* NovelIMECoreTests.xctest */,
 			);
 			name = Products;
@@ -213,6 +170,7 @@
 				2C9123CC5EFAF2D75C38AE16 /* CoreTests */,
 				60F0ED9D4AADA0CCA1B6ED92 /* HostApp */,
 				62C895FE517E8D99DD9F7B63 /* InputMethodExtension */,
+				7E9E6FC475C7BFB4068A80A1 /* Resources */,
 				C03355FA9E685EB92E1878E2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -225,15 +183,13 @@
 			buildConfigurationList = 59654D23ECCDED85B5BAD952 /* Build configuration list for PBXNativeTarget "MoyuAssistant" */;
 			buildPhases = (
 				408B7133127793316C8E5E55 /* Sources */,
+				92BC955F114E33BDF488A56D /* Resources */,
 				3854DF9F0EEC4C4B92A6A7F4 /* Frameworks */,
-				64055FB8BD068BA962BD88AE /* Embed Foundation Extensions */,
-				51D24F4CA1B59728AF430C4B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				EF78587B43F62D4CD447CD8A /* PBXTargetDependency */,
-				25744D546A3A6E4DC40D9476 /* PBXTargetDependency */,
 			);
 			name = MoyuAssistant;
 			packageProductDependencies = (
@@ -242,32 +198,12 @@
 			productReference = DF1FB6D35F1B605C96FE4BDF /* MoyuAssistant.app */;
 			productType = "com.apple.product-type.application";
 		};
-		1F49EF062C133E40907C842C /* MoyuInputMethodExtension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A00A71B09D8CEC31B2CFDFEE /* Build configuration list for PBXNativeTarget "MoyuInputMethodExtension" */;
-			buildPhases = (
-				9E4FDAF759CCDC7672854E89 /* Sources */,
-				10F0EAB2B86AAA6DDE0854C4 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				838E60AACEE101A0C6554043 /* PBXTargetDependency */,
-			);
-			name = MoyuInputMethodExtension;
-			packageProductDependencies = (
-			);
-			productName = MoyuInputMethodExtension;
-			productReference = 84D2F1128B911BA1425F8582 /* MoyuInputMethodExtension.appex */;
-			productType = "com.apple.product-type.app-extension";
-		};
 		5BEF49C3F08BBD8C6D74A500 /* NovelIMECoreTests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0ABDC4E9955409BB7FCF3F77 /* Build configuration list for PBXNativeTarget "NovelIMECoreTests" */;
 			buildPhases = (
 				DC5E339DEAD6D66ABB4287DC /* Sources */,
 				B9B0C5C9110E10543C77198A /* Frameworks */,
-				3517192BA624B179F585EE2A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -286,6 +222,7 @@
 			buildConfigurationList = 75817A1AC685F4BA78FA8086 /* Build configuration list for PBXNativeTarget "NovelIMECore" */;
 			buildPhases = (
 				8FB98CDE4C5F74208B3A8EE2 /* Sources */,
+				0D2F3BF102D3A9D219F91982 /* Copy Swift Objective-C Interface Header */,
 			);
 			buildRules = (
 			);
@@ -295,8 +232,8 @@
 			packageProductDependencies = (
 			);
 			productName = NovelIMECore;
-			productReference = 8575B8146E8AFD97DD502B07 /* NovelIMECore.framework */;
-			productType = "com.apple.product-type.framework";
+			productReference = 04E4A3644877D359A645B263 /* libNovelIMECore.a */;
+			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
 
@@ -308,9 +245,6 @@
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					0652DDA944BF6E7BEC7DC42B = {
-						ProvisioningStyle = Automatic;
-					};
-					1F49EF062C133E40907C842C = {
 						ProvisioningStyle = Automatic;
 					};
 					5BEF49C3F08BBD8C6D74A500 = {
@@ -327,6 +261,7 @@
 			knownRegions = (
 				Base,
 				en,
+				"zh-Hans",
 			);
 			mainGroup = E5F287AB50E6E654D65729A2;
 			minimizedProjectReferenceProxies = 1;
@@ -336,19 +271,52 @@
 			projectRoot = "";
 			targets = (
 				0652DDA944BF6E7BEC7DC42B /* MoyuAssistant */,
-				1F49EF062C133E40907C842C /* MoyuInputMethodExtension */,
 				F5DC28DBBF3C71AF649D2C06 /* NovelIMECore */,
 				5BEF49C3F08BBD8C6D74A500 /* NovelIMECoreTests */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		92BC955F114E33BDF488A56D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8DAF71DCBAB97DAB11A43B41 /* InfoPlist.strings in Resources */,
+				5A4372D295D8A2D43C489DCE /* moyu_input.tiff in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0D2F3BF102D3A9D219F91982 /* Copy Swift Objective-C Interface Header */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(DERIVED_SOURCES_DIR)/$(SWIFT_OBJC_INTERFACE_HEADER_NAME)",
+			);
+			name = "Copy Swift Objective-C Interface Header";
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/include/$(PRODUCT_MODULE_NAME)/$(SWIFT_OBJC_INTERFACE_HEADER_NAME)",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "ditto \"${SCRIPT_INPUT_FILE_0}\" \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		408B7133127793316C8E5E55 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4097B458BCA39B177618021 /* InputSourceRegistrar.swift in Sources */,
 				67D8B2E589F1A4F320E80664 /* MoyuAssistantApp.swift in Sources */,
+				616068121D5DC57EDF12C26C /* MoyuIMEExtensionDelegate.swift in Sources */,
+				B3A7601F4090C3C85DD44894 /* NovelInputController.swift in Sources */,
 				732EA95FAB0654F090100D3B /* SettingsView.swift in Sources */,
 				6BED6FAD478525AD9C5117B5 /* SettingsViewModel.swift in Sources */,
 			);
@@ -364,15 +332,7 @@
 				84B7CCEB7BD7D5AE12EFEC51 /* NovelIMEStateStore.swift in Sources */,
 				3CD40C27C04D436DBAB2928A /* NovelInputPolicy.swift in Sources */,
 				8AFFB8FCB2E042B805D48F42 /* NovelPlaybackEngine.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9E4FDAF759CCDC7672854E89 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8F8A4B0CC835BF33234CBF6A /* MoyuIMEExtensionDelegate.swift in Sources */,
-				F9DB67C4D0364A11AA202D04 /* NovelInputController.swift in Sources */,
+				C461CD33E993CD35E47D8405 /* NovelSourceSecurityStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,20 +349,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		25744D546A3A6E4DC40D9476 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 1F49EF062C133E40907C842C /* MoyuInputMethodExtension */;
-			targetProxy = 8B6ED2CC71611933FF64EEC4 /* PBXContainerItemProxy */;
-		};
 		6EBF981245AF5732293E9204 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = F5DC28DBBF3C71AF649D2C06 /* NovelIMECore */;
 			targetProxy = DB90A066C921ACC51BC90C59 /* PBXContainerItemProxy */;
-		};
-		838E60AACEE101A0C6554043 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = F5DC28DBBF3C71AF649D2C06 /* NovelIMECore */;
-			targetProxy = 034A7AAEBCF0284FD852E817 /* PBXContainerItemProxy */;
 		};
 		EF78587B43F62D4CD447CD8A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -411,20 +361,39 @@
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		8A69136EF9F752C0D33278D9 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				415BBC8EBDF3A05A2CE5A323 /* en */,
+				39AAF1D0C5F7C9773EE4F881 /* zh-Hans */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		1703CF2AC811274A57310311 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = NativeIME/HostApp/MoyuAssistant.entitlements;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_APP_SANDBOX = NO;
+				ENABLE_HARDENED_RUNTIME = NO;
 				INFOPLIST_FILE = NativeIME/HostApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.tantan1hao.moyuassistant;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.tantan1hao.inputmethod.moyuassistant;
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -440,6 +409,10 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.tantan1hao.moyuassistant.coretests;
 				SDKROOT = macosx;
@@ -507,23 +480,6 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 6.0;
-			};
-			name = Debug;
-		};
-		89EDC7FD8AC43D7D700969B7 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				INFOPLIST_FILE = NativeIME/InputMethodExtension/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.tantan1hao.moyuassistant.inputmethod;
-				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
@@ -596,6 +552,10 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.tantan1hao.moyuassistant.coretests;
 				SDKROOT = macosx;
 			};
@@ -606,15 +566,9 @@
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGNING_ALLOWED = NO;
-				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GENERATE_INFOPLIST_FILE = YES;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -622,24 +576,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tantan1hao.moyuassistant.core;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-			};
-			name = Release;
-		};
-		AC03A62419ED11E4B9C050F3 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				INFOPLIST_FILE = NativeIME/InputMethodExtension/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.tantan1hao.moyuassistant.inputmethod;
-				SDKROOT = macosx;
 			};
 			name = Release;
 		};
@@ -647,15 +583,22 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = NativeIME/HostApp/MoyuAssistant.entitlements;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_APP_SANDBOX = NO;
+				ENABLE_HARDENED_RUNTIME = NO;
 				INFOPLIST_FILE = NativeIME/HostApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.tantan1hao.moyuassistant;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.tantan1hao.inputmethod.moyuassistant;
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -665,15 +608,9 @@
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGNING_ALLOWED = NO;
-				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GENERATE_INFOPLIST_FILE = YES;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -681,7 +618,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tantan1hao.moyuassistant.core;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
 		};
@@ -711,15 +647,6 @@
 			buildConfigurations = (
 				E49473B94CE955CCB3329274 /* Debug */,
 				A6FDDBC03876575C3B5BAE73 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
-		};
-		A00A71B09D8CEC31B2CFDFEE /* Build configuration list for PBXNativeTarget "MoyuInputMethodExtension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				89EDC7FD8AC43D7D700969B7 /* Debug */,
-				AC03A62419ED11E4B9C050F3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;

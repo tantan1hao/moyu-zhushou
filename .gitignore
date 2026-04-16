@@ -3,7 +3,10 @@ __pycache__/
 .DS_Store
 .vscode/
 DerivedData/
+DerivedData*/
 *.xcuserstate
 *.xccheckout
 *.moved-aside
 xcuserdata/
+dist/
+:-
