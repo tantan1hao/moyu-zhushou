@@ -10,12 +10,15 @@ public enum NovelIMEConstants {
     public static let inputSourceIdentifier = "com.tantan1hao.moyuassistant.source"
     public static let inputModeIdentifier = "com.tantan1hao.moyuassistant.mode.default"
     public static let defaultAllowedBundleIDs = [
+        "com.apple.TextEdit",
         "com.microsoft.Word",
         "com.kingsoft.wpsoffice.mac",
     ]
 
     public static func displayName(for bundleID: String) -> String {
         switch bundleID {
+        case "com.apple.TextEdit":
+            return "TextEdit"
         case "com.microsoft.Word":
             return "Microsoft Word"
         case "com.kingsoft.wpsoffice.mac":

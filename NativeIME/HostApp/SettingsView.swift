@@ -10,6 +10,8 @@ struct SettingsView: View {
 
             Group {
                 labeledRow("状态", value: viewModel.statusText)
+                labeledRow("输入法状态", value: viewModel.inputSourceStatusText)
+                labeledRow("当前实际输入法", value: viewModel.currentInputSourceText)
                 labeledRow("当前文件", value: viewModel.sourceFilePath)
                 labeledRow("当前进度", value: viewModel.progressText)
                 labeledRow("允许应用", value: viewModel.allowedAppsText)
@@ -22,6 +24,10 @@ struct SettingsView: View {
 
                 Button(viewModel.state.armed ? "关闭模式" : "开启模式") {
                     viewModel.toggleArmed()
+                }
+
+                Button("切到摸鱼助手") {
+                    viewModel.switchToMoyuAssistant()
                 }
 
                 Button("打开输入法文件夹") {

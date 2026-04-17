@@ -3,7 +3,7 @@ import InputMethodKit
 import NovelIMECore
 
 @objc(MoyuNovelInputController)
-final class NovelInputController: IMKInputController {
+final class MoyuHostInputController: IMKInputController {
     private let stateStore = NovelIMEStateStore()
     private let documentLoader = NovelDocumentLoader()
     private let inputPolicy = NovelInputPolicy()
@@ -32,6 +32,7 @@ final class NovelInputController: IMKInputController {
         guard let event, event.type == .keyDown else {
             return false
         }
+
         let frontmostBundleIdentifier = self.frontmostBundleIdentifier
         NovelDiagnosticLogger.log(
             "ime",
@@ -87,6 +88,7 @@ final class NovelInputController: IMKInputController {
             NovelDiagnosticLogger.log("ime", "composedString=nil")
             return nil
         }
+
         NovelDiagnosticLogger.log("ime", "composedString preedit=\(engine.preeditBuffer)")
         return NSAttributedString(
             string: engine.preeditBuffer,
@@ -110,10 +112,6 @@ final class NovelInputController: IMKInputController {
 
     override func showPreferences(_ sender: Any!) {
         let appURL = Bundle.main.bundleURL
-            .deletingLastPathComponent()
-            .deletingLastPathComponent()
-            .deletingLastPathComponent()
-
         NSWorkspace.shared.openApplication(at: appURL, configuration: .init()) { _, _ in }
     }
 
@@ -195,7 +193,7 @@ final class NovelInputController: IMKInputController {
         if let runtimeEngine {
             needsFreshEngine = runtimeEngine.committedParagraphIndex != persistedState.paragraphIndex
                 || runtimeEngine.committedCharIndex != persistedState.charIndex
-                || runtimeEngine.preeditBuffer.isEmpty == false && forceReloadDocument
+                || (!runtimeEngine.preeditBuffer.isEmpty && forceReloadDocument)
         } else {
             needsFreshEngine = true
         }

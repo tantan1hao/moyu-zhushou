@@ -32,12 +32,26 @@ final class NovelInputPolicyTests: XCTestCase {
         XCTAssertEqual(action, .passThrough)
     }
 
-    func testAdvanceKeyPassesThroughInNonTargetApp() {
+    func testAdvanceKeyInterceptsInTextEditSmokeTestApp() {
         let action = policy.action(
             for: NovelInputKey(charactersIgnoringModifiers: "a", keyCode: 0),
             context: NovelInputContext(
                 armed: true,
                 frontmostBundleID: "com.apple.TextEdit",
+                hasRemainingText: true,
+                hasPreedit: false
+            )
+        )
+
+        XCTAssertEqual(action, .advancePreedit)
+    }
+
+    func testAdvanceKeyPassesThroughInNonTargetApp() {
+        let action = policy.action(
+            for: NovelInputKey(charactersIgnoringModifiers: "a", keyCode: 0),
+            context: NovelInputContext(
+                armed: true,
+                frontmostBundleID: "com.apple.Terminal",
                 hasRemainingText: true,
                 hasPreedit: false
             )

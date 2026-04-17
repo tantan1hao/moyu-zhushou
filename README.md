@@ -9,7 +9,7 @@
 
 行为固定为：
 
-- 只有当前输入法被选中、设置页里 `Armed` 打开、且前台应用是 `Microsoft Word` 或 `WPS Writer` 时才接管输入。
+- 只有当前输入法被选中、设置页里 `Armed` 打开、且前台应用是 `TextEdit`、`Microsoft Word` 或 `WPS Writer` 时才接管输入。
 - `A-Z`、`0-9`、`Space`：吞掉原键，把小说下一个字符追加到 preedit。
 - `Delete`：如果 preedit 非空，删除最后一个预编辑字符并回退源游标；否则透传。
 - `Return`：提交当前 preedit；如果当前段刚好结束，会一并写入换行并切到下一段。
@@ -25,7 +25,7 @@
 
 - `sourceFileURL`
 - `armed`
-- `allowedBundleIDs`
+- `allowedBundleIDs`（默认包含 `com.apple.TextEdit`、`com.microsoft.Word`、`com.kingsoft.wpsoffice.mac`）
 - `paragraphIndex`
 - `charIndex`
 - `eofReached`
@@ -84,13 +84,21 @@ xcodebuild build \
 ~/Library/Input Methods/MoyuAssistant.app
 ```
 
+安装后校验当前输入源是否真的切到最终 mode ID：
+
+```bash
+/Users/mac/word/scripts/check_native_ime_status.sh
+```
+
 ## 安装与使用
 
 1. 运行 `/Users/mac/word/scripts/install_native_ime.sh --launch`
 2. 打开安装后的 app，选择稿源并切换 `Armed`
 3. 在 `系统设置 -> 键盘 -> 输入法` 里添加或重新启用 `摸鱼助手输入法`
 4. 切到 `摸鱼助手输入法`
-5. 打开 Word 或 WPS Writer，开始输入
+5. 先在 `TextEdit` 做 smoke test，确认 `activateServer -> handle -> commitComposition` 这条最小链路可用
+6. 再回 `Microsoft Word`
+7. 最后再测 `WPS Writer`
 
 如果系统设置里没有马上出现输入法，先退出并重新打开系统设置；仍然没有出现时，重新登录当前 macOS 用户后再看输入法列表。
 
